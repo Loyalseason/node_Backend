@@ -1,0 +1,67 @@
+const express = require('express');
+
+const app = express();
+
+const Port = 5000;
+
+const friends = [
+    {
+        id : 1,
+        name: 'Stephanie',
+        age : 21
+    }, 
+
+    {
+        id : 2,
+        name: 'Baaba',
+        age : 22
+    },
+
+    {
+        id : 3,
+        name: 'Mark',
+        age : 23
+    },
+
+    {
+        id: 4,
+        name: 'Emmanuel',
+        age : 25
+    }
+]
+
+
+app.get('/friends', (req, res) => {
+    
+    res.json(friends)
+})
+
+app.get('/friends/:id', (req, res) =>{
+   const friendId = Number(req.params.id);
+   const friend = friends[friendId];
+   if(friend){
+    res.status(200).json(friend)
+   }else{
+    res.status(404).json({
+        error: 'Friend Does Not exist'
+    });
+   }
+})
+
+app.get('/messages', (req, res) => {
+    res.send('<ul><li>Hello Shantel</li></u>')
+})
+
+app.get('/messages', (req, res) => {
+    console.log("Updating message ...")
+})
+ 
+app.listen(Port, (err) => {
+    if(!err){
+        console.log(`Listening on ${Port}`);
+    }
+    else{
+        console.log(err)
+    }
+})
+
