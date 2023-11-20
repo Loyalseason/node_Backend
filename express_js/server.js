@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 
 const Port = 5000;
+const friendsController = require('./controllers/messages.controllers')
 
 const friends = [
     {
@@ -70,13 +71,9 @@ app.get('/friends/:id', (req, res) =>{
    }
 })
 
-app.get('/messages', (req, res) => {
-    res.send('<ul><li>Hello Shantel</li></u>')
-})
+app.get('/messages', friendsController.getMessages)
 
-app.get('/messages', (req, res) => {
-    console.log("Updating message ...")
-})
+app.post('/messages', friendsController.postMessages )
  
 app.listen(Port, (err) => {
     if(!err){
