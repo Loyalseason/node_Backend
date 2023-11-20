@@ -3,9 +3,10 @@ const express = require('express');
 const app = express();
 
 const Port = 5000;
-const messagesController = require('./controllers/messages.controllers')
-const friendsController = require('./controllers/friends.controllers')
 
+
+const friendRoutes = require('./routes/friends.router')
+const messageRoutes = require('./routes//messages.routes')
 
 app.use((req, res, next) => {
     const start = Date.now();
@@ -16,16 +17,9 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.post('/friends', friendsController.postFriend)
+app.use('/friends', friendRoutes)
+app.use('/messages', messageRoutes)
 
-app.get('/friends', friendsController.getFriend)
-
-app.get('/friends/:id', friendsController.searchFriend)
-
-app.get('/messages', messagesController.getMessages)
-
-app.post('/messages', messagesController.postMessages )
- 
 app.listen(Port, (err) => {
     if(!err){
         console.log(`Listening on ${Port}`);
