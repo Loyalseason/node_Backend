@@ -45,10 +45,25 @@ app.get('/todos/:todoId', (req, res) => {
         if(todo){
             res.json(todo)
         }else{
-            res.status(403).json({error : 'Todo cannot be found'})
+            res.status(404).json({error : 'Todo cannot be found'})
         }
         
 })
+
+app.patch('/todos/:todoId', (req, res) => {
+    const id = Number(req.params.todoId);
+    let todo = todos[id];
+    if(todo){
+        todo.id = id
+        todo.task = req.body.task
+        todo.completed = req.body.completed
+        res.json(todo);
+    }else{
+        res.status(404).json({error : "Request Not Found"})
+    }
+
+})
+
 app.listen(port, (err) => {
     if(err){
         console.log(err)
