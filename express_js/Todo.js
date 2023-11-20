@@ -64,6 +64,17 @@ app.patch('/todos/:todoId', (req, res) => {
 
 })
 
+app.delete('/todos/:todoId', (req, res) => {
+    const id =Number(req.params.todoId);
+    const todo = todos.findIndex(todo => todo.id === id);
+
+    if(todo !== -1){
+        const deletedTodo = todos.splice(todo, 1)
+        res.json({message : "Todo Deleted Successfully", deletedTodo});
+    }else{
+        res.status(404).json({error: "Todo Not Found"})
+    }
+})
 app.listen(port, (err) => {
     if(err){
         console.log(err)
