@@ -1,5 +1,5 @@
 const express = require('express');
-
+const path = require('path')
 const app = express();
 
 const Port = 5000;
@@ -14,6 +14,8 @@ app.use((req, res, next) => {
     const delta = Date.now() - start;
     console.log(`${req.method}, ${req.url} ${delta}ms `)
 })
+
+app.use('/site',express.static(path.join('public')))
 
 app.use(express.json());
 
