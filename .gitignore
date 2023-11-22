@@ -7,3 +7,5 @@
 # Ignore build artifacts
 build/
 dist/
+
+**/node_Backend.code-workspace
