@@ -1,6 +1,5 @@
 const {parse}= require('csv-parse')
 const fs = require('fs')
-const path = require('path')
 const habitablePlanets = [];
 
 
@@ -29,10 +28,7 @@ function loadPlanetsData(){
             rej(err);
         })
         .on('end', () => {
-            console.log(habitablePlanets.map((planet) => {
-                return planet['kepler_name'];
-            }));
-        
+            console.log(`${habitablePlanets.length} habitable planets found`);
             console.log('done');
             res()
         });
