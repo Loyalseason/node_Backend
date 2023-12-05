@@ -31,9 +31,11 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       launchDate,
       mission,
       rocket,
-      target,
+      target, 
     });
 
+    console.log(response)
+   
     const success = response.ok;
     if (success) {
       getLaunches();
@@ -45,6 +47,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       onFailureSound();
     }
   }, [getLaunches, onSuccessSound, onFailureSound]);
+  
 
   const abortLaunch = useCallback(async (id) => {
     const response = await httpAbortLaunch(id);
