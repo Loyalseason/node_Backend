@@ -46,5 +46,4 @@ module.exports = {
     addNewLaunch,
     existLaunchWithId,
     abortLaunchById,
-
 } 

@@ -16,6 +16,7 @@ for(let index = 0; index < combined.length; index++){
         min = combined[index]
     }
 }
+
 console.log('Maximum Value =',max);
 console.log('Minimum value =',min);
 
