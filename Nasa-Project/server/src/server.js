@@ -3,7 +3,7 @@ const app = require('./app');
 const mongoose =  require('mongoose')
 const PORT = process.env.PORT || 8000;
 
-const MONGO_URL = 'mongodb+srv://loyalseason:Us4hmdP8MzeRqJXX@nasacluster.8lqbnso.mongodb.net/?retryWrites=true&w=majority';
+const MONGO_URL = 'Path';
 const server = http.createServer(app);
 const {loadPlanetsData} = require('./models/planets.model')
 
